@@ -1,13 +1,8 @@
 <% layout("/templets/boilerplate") -%>
-    <!-- <h3>All Listings</h3> -->
-    <!-- <form action="/listings/new">
-        <button>Add new</button>
-    </form> -->
     <style>
         #filters{
             display: flex;
             margin-top:1rem;
-            /* align-items: center; */
         }
         .filter{
             margin-right: 2rem;
@@ -17,7 +12,7 @@
         .filter:hover{
             opacity: 1;
         }
-        .filter p{
+        .filter a{
             font-size: 0.7rem;
         }
         .scrollable-div::-webkit-scrollbar {
@@ -47,47 +42,47 @@
         
         <div class="filter">
             <div><i class="fa-solid fa-water-ladder"></i></div>
-            <p>Amazing pools</p>
+            <a class="nav-link" href="/listings/category?type=amazing pool">Amazing pools</a>
         </div>
         <div class="filter">
             <div><i class="fa-solid fa-tractor"></i></div>
-            <p>Farms</p>
+            <a class="nav-link" href="/listings/category?type=farm">Farms</a>
         </div>
         <div class="filter">
             <div><i class="fa-solid fa-fire"></i></div>
-            <p>Fire</p>
+            <a class="nav-link" href="/listings/category?type=trending">Trending</a>
         </div>
         <div class="filter">
             <div><i class="fa-solid fa-snowflake"></i></div>
-            <p>Arctic</p>
+            <a class="nav-link" href="/listings/category?type=arctic">Arctic</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-city"></i>
-            <p>Design</p>
+            <a class="nav-link" href="/listings/category?type=design">Design</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-mountain-city"></i>
-            <p>Countryside</p>
+            <a class="nav-link" href="/listings/category?type=countryside">Countryside</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-umbrella-beach"></i>
-            <p>Beach</p>
+            <a class="nav-link" href="/listings/category?type=beach">Beach</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-baseball"></i>
-            <p>Play</p>
+            <a class="nav-link" href="/listings/category?type=play">Play</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-water"></i>
-            <p>Lake</p>
+            <a class="nav-link" href="/listings/category?type=lake">Lake</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-landmark-dome"></i>
-            <p>Historical places</p>
+            <a class="nav-link" href="/listings/category?type=historical place">Historical places</a>
         </div>
         <div class="filter">
             <i class="fa-solid fa-campground"></i>
-            <p>Camping</p>
+            <a class="nav-link" href="/listings/category?type=camping">Camping</a>
         </div>
     </div>
     <div class="tax-toggle mb-2 mt-2 ms-auto">
@@ -116,16 +111,11 @@
             </a>
         <%}%>
     </div>
-    
-    <!-- <ul>
-            <li><a href="/listings/<%#= Listing._id %>"><%#=Listing.title %></a></li>  
-    </ul> -->
 
 <script>
     let taxSwitch = document.getElementById("flexSwitchCheckDefault");
     taxSwitch.addEventListener("click",()=>{
         let taxs = document.getElementsByClassName("tax");
-        console.log(taxs); 
         for(tax of taxs){
             console.log(tax.display);
             if(tax.style.display != "inline")

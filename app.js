@@ -71,7 +71,7 @@ const sessionOptions = {
     cookie:{
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge:  7 * 24 * 60 * 60 * 1000,
-        httpOnly: true // Use to prevent cross scripting attaks(XSS)
+        httpOnly: true
     }
 }
 
@@ -88,28 +88,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//root page
-// app.get("/",(req,res)=>{
-//     res.send("I am a root");
-// })
-
 app.use((req,res,next)=>{
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.currUser = req.user;
     next();
 })
-
-//demouser
-// app.get("/demouser",async (req,res)=>{
-//     let fakeUser = new User({
-//         email: "abc@gmail.com",
-//         username: "abc"
-//     });
-
-//     let registoredUser = await User.register(fakeUser,"HelloWorld");
-//     res.send(registoredUser);
-// })
 
 //routers
 app.use("/listings",listingsRoute);
@@ -126,19 +110,3 @@ app.use((err,req,res,next)=>{
     let {statuscode=500,message="Something went wroung"} = err;
     res.status(statuscode).render("./error.ejs",{message});
 })
-
-
-// app.get("/test",async (req,res)=>{
-//     let sampleListing = new Listing({
-//         title: "My new Home",
-//         description: "By the beach",
-//         price: 2200,
-//         location: "Kavane,Maharashtra",
-//         country: "India"
-//     })
-
-//     await sampleListing.save();
-//     console.log("sample is saved");
-//     res.send("Succsesfully saved");
-
-// })

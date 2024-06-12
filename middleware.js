@@ -4,11 +4,8 @@ const ExpressError = require("./utils/expressError.js");
 const {listingSchema,reviewSchema} = require("./schema.js");
 
 module.exports.isLoggedIn = (req,res,next)=>{
-    // console.log(req.isAuthenticated());
-    // console.log(req.user);
     if(!req.isAuthenticated()){
         req.session.redirectUrl = req.originalUrl;
-        // console.log(req.originalUrl);
         req.flash("error","You can not Loged in so Please Login to Wanderlust");
         return res.redirect("/login");
     }
@@ -57,7 +54,6 @@ module.exports.validateReview = (req,res,next)=>{
 module.exports.isReviewAuther = async(req,res,next)=>{
     let {id,reviewId} = req.params;
     let checkauther = await Review.findById(reviewId);
-    // console.log(checkauther);
     if(res.locals.currUser && !checkauther.auther._id.equals(res.locals.currUser._id)){
         req.flash("error","You are not Created this Review");
         return res.redirect(`/listings/${id}`);
