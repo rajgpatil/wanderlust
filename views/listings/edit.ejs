@@ -36,6 +36,24 @@
                     <label for="country" class="form-label">Country</label>
                     <input value="<%=listing.country%>" name="listing[country]" type="text" class="form-control">
                 </div>
+                <div class="dropdown mb-3">
+                    <label for="category" class="form-label">Select Category</label>
+                    <select name="listing[category]" required>
+                        <option value="amazing pool">Amazing pool</option>
+                        <option value="farm">Farm</option>
+                        <option value="trending">Trending</option>
+                        <option value="arctic">Arctic</option>
+                        <option value="design">Design</option>
+                        <option value="countryside">Countryside</option>
+                        <option value="beach">Beach</option>
+                        <option value="play">Play</option>
+                        <option value="lake">Lake</option>
+                        <option value="historical place">Historical places</option>
+                        <option value="camping">Camping</option>
+
+                    </select>
+                </div>
+
                 <button class="btn btn-dark btn-edit mt-3 mb-3">Edit</button>
             </form>
         </div>
